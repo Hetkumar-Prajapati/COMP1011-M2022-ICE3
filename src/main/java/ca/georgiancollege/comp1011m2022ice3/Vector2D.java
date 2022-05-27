@@ -14,18 +14,26 @@ public class Vector2D
 
     public Vector2D()
     {
+        m_id = -1;
+        setX(0.0f);
+        setY(0.0f);
         m_x = 0.0f;
         m_y = 0.0f;
     }
-
+    public Vector2D(int id, float x, float y)
+    {
+        this(x,y);
+        setID(id);
+    }
     /**
      * @param x
      * @param y
      */
     public Vector2D(float x, float y)
     {
-        m_x = x;
-        m_y = y;
+        m_id = -1;
+        setX(x);
+        setY(y);
     }
 
     //public properties (Getters ang Setters)
@@ -35,7 +43,14 @@ public class Vector2D
     }
 
     public void setID(float id) {
-        m_id = id;
+        if(id<0)
+        {
+            throw new IllegalArgumentException("Vector id must be greater than zero");
+        }
+        else
+        {
+            m_id = id;
+        }
     }
     public float getY()
     {
