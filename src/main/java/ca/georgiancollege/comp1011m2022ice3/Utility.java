@@ -1,6 +1,10 @@
 package ca.georgiancollege.comp1011m2022ice3;
 
 
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.TextField;
+
 public class Utility
 {
 
@@ -43,6 +47,31 @@ public class Utility
         return (float) Math.sqrt(diffXs * diffXs + diffYs * diffYs);
     }
 
+    public void ConfigureVector2DSpinner(Spinner<Double> spinner , double min, double max, double default_value , double increment_value )
+    {
+        // configure each spinner
+        // step 1: define a spinner value factory
+        SpinnerValueFactory<Double> spinnerValueFactory =new SpinnerValueFactory.DoubleSpinnerValueFactory(min,max, default_value, increment_value);
 
+        // step 2: set the value factory
+        spinner.setValueFactory(spinnerValueFactory);
+
+        //step 3: get access to the spinner textfield
+        TextField spinnerTextField = spinner.getEditor();
+
+        //step 4: create event listeneer
+
+        spinnerTextField.textProperty().addListener((observable , oldValue , newValue )->
+        {
+            try
+            {
+                Float.parseFloat(newValue);
+            }
+            catch (Exception e)
+            {
+                spinnerTextField.setText(oldValue);
+            }
+        });
+    }
 }
 
