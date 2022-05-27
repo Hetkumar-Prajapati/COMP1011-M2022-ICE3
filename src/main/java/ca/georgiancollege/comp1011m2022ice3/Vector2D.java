@@ -4,6 +4,10 @@ public class Vector2D
 {
 
     //Private instance members
+
+
+
+    private float m_id;
     private float m_x;
     private float m_y;
     //constructors
@@ -26,7 +30,13 @@ public class Vector2D
 
     //public properties (Getters ang Setters)
 
+    public float getID() {
+        return m_id;
+    }
 
+    public void setID(float id) {
+        m_id = id;
+    }
     public float getY()
     {
         return m_y;
