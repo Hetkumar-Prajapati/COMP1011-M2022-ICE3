@@ -4,6 +4,7 @@ package ca.georgiancollege.comp1011m2022ice3;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 
 public class CalculateVector2DDistanceController {
@@ -11,27 +12,28 @@ public class CalculateVector2DDistanceController {
     @FXML
     private TextField ResultTextField;
 
-    @FXML
-    private TextField X1TextField;
 
     @FXML
-    private TextField X2TextField;
+    private Spinner<Double> X1Spinner;
 
     @FXML
-    private TextField Y1TextField;
+    private Spinner<Double> X2Spinner;
 
     @FXML
-    private TextField Y2TextField;
+    private Spinner<Double> Y1Spinner;
+
+    @FXML
+    private Spinner<Double> Y2Spinner;
 
     @FXML
     void OnCalculateButtonClicked(ActionEvent event)
     {
         //Setup variables
         try {
-            float x1 = Float.parseFloat(X1TextField.getText());
-            float y1 = Float.parseFloat(Y1TextField.getText());
-            float x2 = Float.parseFloat(X2TextField.getText());
-            float y2 = Float.parseFloat(Y2TextField.getText());
+            float x1 = X1Spinner.getValue().floatValue();
+            float y1 = Y1Spinner.getValue().floatValue();
+            float x2 = X2Spinner.getValue().floatValue();
+            float y2 = Y2Spinner.getValue().floatValue();
 
             Vector2D point1 = new Vector2D(x1, y1);
             Vector2D point2 = new Vector2D(x2, y2);
@@ -48,13 +50,14 @@ public class CalculateVector2DDistanceController {
     @FXML
     void OnResetButtonClicked(ActionEvent event)
     {
-        X1TextField.clear();
-        Y1TextField.clear();
-        X2TextField.clear();
-        Y2TextField.clear();
+        X1Spinner.getValueFactory().setValue(0.0);
+        Y1Spinner.getValueFactory().setValue(0.0);
+        X2Spinner.getValueFactory().setValue(0.0);
+        Y2Spinner.getValueFactory().setValue(0.0);
+
         ResultTextField.clear();
 
-        X1TextField.requestFocus();
+        X1Spinner.requestFocus();
     }
 
 }
