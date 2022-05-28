@@ -19,7 +19,7 @@ public class DBManager
     //=================================================================
 
     private String m_user = "root";
-    private String m_password = "123456";
+    private String m_password = "#Beinghet04";
     private String m_connectURl = "jdbc:mysql://loacalhost:3306/comp1011m2022";
 
     public int insertVector2D(Vector2D vector2d) throws SQLException {
@@ -35,6 +35,8 @@ public class DBManager
         {
             statement.setFloat(1, vector2d.getX());
             statement.setFloat(2, vector2d.getY());
+
+            statement.executeUpdate();
 
             resultSet = statement.getGeneratedKeys();
             while(resultSet.next())
